@@ -14,11 +14,11 @@ This bot is built in Python and integrated with the Telegram Bot API.
 * You must have an SSH key generated before executing the commands
 1. Clone the repository:
    ```shell
-   git clone git@github.com:vladysllav/FitnessBot.git
+   git clone git@github.com:usik-sviatoslav/Fitness_bot_23.08.git
    ```
    because of the firewall settings, the command may not work, then we use
    ```shell
-   git clone https://github.com/vladysllav/FitnessBot.git
+   git clone https://github.com/usik-sviatoslav/Fitness_bot_23.08.git
    ```
 2. Install the required dependencies using Poetry:
   *Check if Poetry is installed
@@ -28,7 +28,7 @@ This bot is built in Python and integrated with the Telegram Bot API.
    if installed, execute
 
    ```shell
-   cd FitnessBot/src/ poetry install
+   cd Fitness_bot_23.08/src/ poetry install
    ```
 
    if not installed, execute
@@ -53,12 +53,12 @@ Try running:
    and 
 
    ```shell
-   cd FitnessBot/src/ poetry install
+   cd Fitness_bot_23.08/src/ poetry install
    ``` 
 
 3. Create a `.env` file based on the `.env.example` file:
    ```shell
-   cd FitnessBot
+   cd Fitness_bot_23.08
    ```
    ```shell
    cp .env.example .env
@@ -67,7 +67,7 @@ Try running:
 ## Usage
    To start the Fitness Telegram Bot, run the following command:
    ```shell
-   cd FitnessBot/src/
+   cd Fitness_bot_23.08/src/
    ```
    ```shell
    poetry shell
