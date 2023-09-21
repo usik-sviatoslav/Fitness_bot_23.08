@@ -1,8 +1,8 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackContext, CallbackQueryHandler
 import os
-from .db import engine, SessionLocal
-from .models import Base, User
+from db import engine, SessionLocal
+from models import Base, User
 from sqlalchemy.orm import Session  # Import Session
 
 Base.metadata.create_all(bind=engine)
