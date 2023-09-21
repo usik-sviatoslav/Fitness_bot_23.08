@@ -5,8 +5,10 @@ from db import engine, SessionLocal
 from models import Base, User
 from sqlalchemy.orm import Session  # Import Session
 
-Base.metadata.create_all(bind=engine)
+from src.csv_file_handler import CSVFileHandler
+from src.user_service import UserService
 
+Base.metadata.create_all(bind=engine)
 
 """
 example of a function to create a user
@@ -20,6 +22,7 @@ def create_user(username: str, email: str):
     db.close()
     return db_user
 """
+
 
 class FitnessBot:
 
@@ -51,8 +54,13 @@ class FitnessBot:
     async def handle_type_options(self, update: Update, context: CallbackContext) -> None:
         query = update.callback_query
         query_data = query.data
+        user_id = update.callback_query.from_user.id
         user_type = query_data.split('_')[1]
-
+        user_name = update.callback_query.from_user.username
+        first_name = update.callback_query.from_user.first_name
+        last_name = update.callback_query.from_user.last_name
+        user_service = UserService(CSVFileHandler("users.csv"))
+        user_service.add_user([user_id, user_name, first_name, last_name, user_type])
         if user_type == 'coach':
             coach_keyboard = [
                 [
@@ -72,6 +80,6 @@ class FitnessBot:
 
 
 if __name__ == '__main__':
-    TOKEN = "6339442727:AAEA7V9pgUX4uo80fSR4eG1PCWQwOQJF2aQ"
+    TOKEN = os.getenv("TELEGRAM_TOKEN")
     bot = FitnessBot(TOKEN)
     bot.run()
