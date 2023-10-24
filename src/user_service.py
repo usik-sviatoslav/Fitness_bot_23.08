@@ -1,6 +1,7 @@
-from src.csv_file_handler import CSVFileHandler
-
-
+from csv_file_handler import CSVFileHandler
+from models import User
+from sqlalchemy.orm import Session
+from db import engine
 class UserService:
     """
         Service which respond for all communications between users
@@ -9,9 +10,13 @@ class UserService:
 
     def __init__(self, handler: CSVFileHandler):
         self.handler = handler
+        self.session = Session(engine)
 
-    def check_user_exist(self):
-        pass
+
+    def check_user_exist(self, user_id):
+        user_exist = self.session.query(User).filter(User.id == user_id).first()
+        return user_exist
+
 
     def get_user_by_id(self, id: int):
         pass
